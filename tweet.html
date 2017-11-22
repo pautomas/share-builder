@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script type="text/javascript" src="dom-to-image.min.js"></script>
+    <script type="text/javascript" src="croppie.min.js"></script>
+    <script type="text/javascript" src="toolbar.js"></script>
+    <script type="text/javascript" src="canvas.js"></script>
+    <script type="text/javascript" src="tweet.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="croppie.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="content">
+      <label id="color-picker">
+        <input type="color" value="#50e3c2"></input>
+      </label>
+      <label id="font-size">
+        <input type="range" min="60" max="100" step="10" value="80"></input>
+      </label>
+      <div id="aspect-ratio">
+        <label for="radio-portrait"><input id="radio-portrait" type="radio" name="ratio" value="portrait-ratio" checked/>Portrait</label>
+        <label for="radio-landscape"><input id="radio-landscape" type="radio" name="ratio" value="landscape-ratio"/>Landscape</label>
+        <label for="radio-square"><input id="radio-square" type="radio" name="ratio" value="square-ratio"/>Square</label>
+      </div>
+      <div id="container" class="tweet portrait-ratio">
+        <div id="canvas">
+          <div class="square black"></div>
+          <div id="input-box" class="tweet">
+            <div class="textarea"></div>
+            <div autofocus="true" class="main textarea" contenteditable="true" style="color: transparent; caret-color: white"></div>
+          </div>
+          <div class="username">
+            <input type="text" placeholder="@USERNAME" class="textarea"></input>
+        </div>
+        </div>
+      </div>
+      <div id="toolbar">
+        <input class="title-input" type="text" placeholder="Click to add a title..."/>
+        <button id="export" data-name="tweet">Export</button>
+        <span class="navigation">
+          <span>New... </span>
+          <span><a href="index.html">Share</a></span>
+          <span><a href="tweet.html">Tweet</a></span>
+        </span>
+      </div>
+      <div class="modal hidden">
+        <div class="modal-container">
+          <div class="modal-content">
+            <div class="croppie"></div>
+          </div>
+          <div class="modal-toolbar">
+            <button id="save-edit">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+      toolbar.init();
+      canvas.init();
+      tweet.init();
+    } else {
+      alert('The File APIs are not fully supported in this browser.');
+    }
+  </script>
+
+<html>
